@@ -1,12 +1,15 @@
-import { Dice3, Pen, Trash } from 'lucide-react'
-import React from 'react'
+import { Check, Dice3, Pen, Trash, TriangleAlert } from 'lucide-react'
+import React, { useState } from 'react'
+
+const studentsList = [
+  {name: "Axis", ID: "LC00017004254", dep: "BIT", status: true},
+  {name: "Pukku", ID: "LC00017004255", dep: "BIT", status: false},
+  {name: "Fulla Singh", ID: "LC00017004256", dep: "BIT", status: false},
+  {name: "Aizen Sousuke", ID: "LC00017004257", dep: "BIT", status: true},
+]
 
 export default function Students() {
-  const studentsList = [
-    {name: "Axis", ID: "0001400248", dep: "BIT", status: true},
-    {name: "Puchu", ID: "0001400154", dep: "BCS", status: true},
-    {name: "Kirmada", ID: "0001400250", dep: "BIT", status: false},
-  ]
+  const [studentsData, setStudentData] = useState(studentsList)
   return (
     <>
       <div className="">
@@ -33,7 +36,7 @@ export default function Students() {
                     <td className='font-semibold'>{name}</td>
                     <td className='text-xs items-center flex'>{ID}</td>
                     <td className='font-semibold'>{dep}</td>
-                    <td className='text-xs items-center flex'>{status ? "Enrolled" : "Not enrolled"}</td>
+                    <td className='text-xs items-center flex cursor-pointer'>{status ? <span className='text-green-500 p-1 bg-gray-100 rounded-xs shadow-[0_1px_2px_rgba(0,0,0,.2)] flex'><Check/> Enrolled</span> : <span className='text-red-500 p-1 bg-gray-100 rounded-xs shadow-[0_1px_2px_rgba(0,0,0,.2)] flex items-center'><TriangleAlert/> Not enrolled</span> }</td>
                     <td className='flex items-center'><span className='flex gap-4'><Pen className='cursor-pointer
                     hover:text-gray-500 duration-300'/> <Trash className='cursor-pointer
                     hover:text-gray-500 duration-300'/></span> </td>
