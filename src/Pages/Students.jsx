@@ -3,7 +3,9 @@ import React from 'react'
 
 export default function Students() {
   const studentsList = [
-    {name: "Axis", ID: "0001400248", dep: "BIT", status: true}
+    {name: "Axis", ID: "0001400248", dep: "BIT", status: true},
+    {name: "Puchu", ID: "0001400154", dep: "BCS", status: true},
+    {name: "Kirmada", ID: "0001400250", dep: "BIT", status: false},
   ]
   return (
     <>
@@ -28,12 +30,13 @@ export default function Students() {
               return(
                 <tr key={index} className='grid grid-cols-[2fr_1fr_1fr_1fr_1fr]
                   gap-5 px-2 py-3 hover:bg-gray-200 my-2'>
-                    <td>{name}</td>
+                    <td className='font-semibold'>{name}</td>
                     <td className='text-xs items-center flex'>{ID}</td>
-                    <td>{dep}</td>
+                    <td className='font-semibold'>{dep}</td>
                     <td className='text-xs items-center flex'>{status ? "Enrolled" : "Not enrolled"}</td>
-                    <td><span className='flex justify-between
-                    px-4 items-center content-center'><Pen/> <Trash/></span> </td>
+                    <td className='flex items-center'><span className='flex gap-4'><Pen className='cursor-pointer
+                    hover:text-gray-500 duration-300'/> <Trash className='cursor-pointer
+                    hover:text-gray-500 duration-300'/></span> </td>
                 </tr>
               )
             })}
