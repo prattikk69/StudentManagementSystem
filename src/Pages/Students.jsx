@@ -1,5 +1,7 @@
 import { Check, ChevronLeft, ChevronRight, Pen, Trash, TriangleAlert } from 'lucide-react';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import SearchBar from '../Components/SearchBar';
+import AddStudentBtn from '../Components/AddStudentBtn';
 
 const studentsList = [
   { name: "Axis", ID: "LC00017004254", dep: "BIT", status: true },
@@ -15,6 +17,7 @@ const studentsList = [
 export default function Students() {
   const [studentsData, setStudentData] = useState(studentsList);
   const [currentPage, setCurrentPage] = useState(1);
+  const [query, setQuery] = useState("")
   const itemsPerPage = 5;
 
   // Calculate index ranges
@@ -30,12 +33,20 @@ export default function Students() {
       setCurrentPage(pageNumber);
     }
   };
+  useEffect(()=>{
+    const data = studentsList.filter((student) => {
+      return student.name.trim().toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())
+    })
+    setStudentData(data);
+    
+  },[query])
 
   return (
     <div className="p-6">
-      <div>
-        <h2 className="font-semibold text-2xl">Student Directory</h2>
-        <p className="w-2/3 opacity-40 text-xs">Manage and view enrolled students across all departments.</p>
+      <div className='flex'>
+        <div><h2 className="font-semibold text-2xl">Student Directory</h2>
+        <p className="w-2/3 opacity-40 text-xs">Manage and view enrolled students across all departments.</p></div>
+        <SearchBar value={query} onChange={setQuery}/>
       </div>
 
       <div className="mt-8 border rounded-lg overflow-hidden bg-white shadow-sm">
@@ -113,6 +124,7 @@ export default function Students() {
           </div>
         </div>
       </div>
+        <AddStudentBtn/>
     </div>
   );
 }

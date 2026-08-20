@@ -1,6 +1,32 @@
 @import "tailwindcss";
 *{font-family: 'poppins', sans-serif; box-sizing: border-box;}
-
+body{overflow: hidden;}
+::-webkit-scrollbar{display: none;}
 .nav a{color: gray;}
 .nav a:hover{background-color: rgba(43,127,255,.2);}
 .nav a.active{color: rgba(0, 0, 0, 0.7);background-color: rgba(43,127,255,.4); color: rgb(43,127,255)}
+.addStudentForm input,select,button{border: solid 1px gray; padding: 5px;
+    border-radius: 4px;}
+.addStudentForm{
+    flex-direction: column;
+    border: none;
+    position: absolute;
+    top: 50%;left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    width: 30vw;height: clamp(50vh, 55vh, 70vh); 
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, .2);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    display: none;
+}
+.addStudentForm.activeForm{
+    display: flex; gap: 20px;
+    animation: formAppear .2s  1 forwards ease;
+}
+@keyframes formAppear{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}

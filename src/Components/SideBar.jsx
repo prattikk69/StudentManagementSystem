@@ -15,7 +15,7 @@ export default function SideBar() {
     return (
         <div className=' bg-gray-100 w-1/5
         px-2 py-1 h-screen border-r-gray-600 flex
-        flex-col'>
+        flex-col sidebar'>
                 <Brand/>
                 <div className="nav mt-8">
                     {navLists.map(({lable, icon:Icon, link}, index) => {
